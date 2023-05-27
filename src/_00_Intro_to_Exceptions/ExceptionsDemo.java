@@ -1,5 +1,7 @@
 package _00_Intro_to_Exceptions;
 
+import javax.swing.JOptionPane;
+
 public class ExceptionsDemo {
 
     /*
@@ -39,12 +41,28 @@ public class ExceptionsDemo {
     public static void main(String[] args) {
 
         // 1. Create a try/catch block (Hint: type "try" and ctrl + space).
-
+    		try {
+				testFiveOrGreater(4);
+			} 
+    		catch (Exception e) {
+				// TODO: handle exception
+    			e.printStackTrace();
+			}
+    		try {
+				testPositive(-1);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				NegativeNumberException.scaryPopUp();
+			}
+    		finally {
+    			JOptionPane.showMessageDialog(null, "The code is fine");
+    		}
         /*
          * 2. Call the testFiveOrGreater method with a value less than 5 inside
          * the try block.
          */
-
+    		
         /*
          * 3. Call e.printStackTrace() in the catch block. This prints out the
          * last methods called during your program's execution to the console in
@@ -64,6 +82,12 @@ public class ExceptionsDemo {
      * critical error in their computer.
      */
 
+    		public static void testPositive(int x) throws NegativeNumberException {
+    			if(x < 0) {
+    				throw new NegativeNumberException();
+    			}
+    		}
+    
     /*
      * 7. Create a static method in this class called testPositive. It should
      * take a single number as a parameter and throw a NegativeNumberException
