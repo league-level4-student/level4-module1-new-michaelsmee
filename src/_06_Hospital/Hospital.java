@@ -16,20 +16,32 @@ public class Hospital {
 		unassignedPatients.add(patient);
 	}
 	
-	public ArrayList getpatients() {
+	public ArrayList<Patient> getpatients() {
 		return unassignedPatients;
 	}
 	
-	public ArrayList getDoctors() {
+	public ArrayList<Doctor> getDoctors() {
 		return doctorList;
 	}
 
 	public void assignPatientsToDoctors() {
-		for(int i = 0; i < doctorList.size(); i++) {
-			for(int x = 0; x<3; x++) {
-			doctorList.get(i).assignPatient(unassignedPatients.get(i%x));
+		
+		int y = 0;
+		
+		while(unassignedPatients.size() > 0) {
+			try {
+				doctorList.get(y).assignPatient(unassignedPatients.get(0));
+				unassignedPatients.remove(0);
+			} catch (DoctorFullException e) {
+				// TODO Auto-generated catch block
+				y++;
+				
+				
+			}
+			
+			
+		
 		}
 		
-	}
 }
 }
